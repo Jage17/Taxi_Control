@@ -14,8 +14,21 @@ class UserController extends Controller
      * @param  \App\User  $model
      * @return \Illuminate\View\View
      */
-    public function index(User $model)
+    
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+    
+     public function index(User $model)
     {
         return view('users.index');
     }
+
+    public function store(Request $request)
+    {  
+        $datos = request()->all();
+        $users::insert($datos); 
+    }
+
 }
