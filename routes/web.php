@@ -45,3 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
+
+
+Route::resource('Customer', 'CustomerController');
+Route::resource('TaxiDriver', 'TaxiDriverController');
+Route::resource('Vehicle', 'VehicleController');
+route::resource('Races','RaceController');
