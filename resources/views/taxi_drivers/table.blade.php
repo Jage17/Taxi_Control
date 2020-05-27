@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($Taxidrivers as $taxidriver)
+        @foreach($Taxidrivers ?? '' as $taxidriver)
             <tr>
                 <td>{{ $taxidriver->first_name }}</td>
             <td>{{ $taxidriver->second_name }}</td>

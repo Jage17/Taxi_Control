@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\User;
-use App\Customer;
+use App\Secretary;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class SecretaryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CustomerController extends Controller
     public function index()
     {
         //
-        $Customers = User::orderBy('id','DESC')->paginate(15);
-        return view('customers.index',compact('Customers'));
+        $Secretarys = User::orderBy('id','DESC')->paginate(15);
+        return view('secretarys.index',compact('secretarys'));
 
     }
 
@@ -28,7 +28,7 @@ class CustomerController extends Controller
     public function create()
     {
         //
-        return view('customers.create');
+        return view('secretarys.create');
     }
 
     /**
@@ -50,10 +50,10 @@ class CustomerController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'telephone' => $data['telephone'],
-            'role_id' => '4'
+            'role_id' => '2'
         ]);
 
-        return  redirect()->route('Customer.index',compact('Customer'))->with('info','Registro Guardado satisfactoriamente');
+        return  redirect()->route('Secretary.index',compact('Secretary'))->with('info','Registro Guardado satisfactoriamente');
 
     }
 
@@ -66,8 +66,8 @@ class CustomerController extends Controller
     public function show($id)
     {
         //
-        $Customer = User::find($id);
-        return view('customers.show',compact('Customer'));
+        $Secretary = User::find($id);
+        return view('secretarys.show',compact('Secretary'));
 
     }
 
@@ -80,8 +80,8 @@ class CustomerController extends Controller
     public function edit($id)
     {
         //
-        $Customer = User::find($id);
-        return view('customers.edit',compact('Customer'));
+        $Secretary = User::find($id);
+        return view('secretarys.edit',compact('Secretary'));
     }
 
     /**
@@ -94,16 +94,16 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
 
-        $Customer = User::find($id);
-        $Customer->first_name = $request->first_name;
-        $Customer->second_name = $request->second_name;
-        $Customer->surname = $request->surname;
-        $Customer->second_surname = $request->second_surname;
-        $Customer->email = $request->email;
-        $Customer->telephone = $request->telephone;
+        $Secretary = User::find($id);
+        $Secretary->first_name = $request->first_name;
+        $Secretary->second_name = $request->second_name;
+        $Secretary->surname = $request->surname;
+        $Secretary->second_surname = $request->second_surname;
+        $Secretary->email = $request->email;
+        $Secretary->telephone = $request->telephone;
 
-        $Customer->save();
-        return  redirect()->route('Customer.index')->with('info','Registro actualizado satisfactoriamente');
+        $Secretary->save();
+        return  redirect()->route('Secretary.index')->with('info','Registro actualizado satisfactoriamente');
 
 
     }
@@ -117,7 +117,7 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //
-        $Customer = User::find($id)->delete();
-        return redirect()->route('customers.index',compact($Customer))->with('info','Registro eliminado satisfactoriamente');
+        $Secretary = User::find($id)->delete();
+        return redirect()->route('secretarys.index',compact($Secretary))->with('info','Registro eliminado satisfactoriamente');
     }
 }

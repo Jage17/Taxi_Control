@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="form-group has-feedback{{ $errors->has('telephone') ? ' has-error' : '' }}">
-                                <input type="text" class="form-control" name="telephone" value="{{ old('telephone') }}" placeholder="Telephone">
+                                <input type="text" class="form-control" name="telephone" value="{{ old('telephone') }}" placeholder="Telefono">
                                 @if ($errors->has('telephone'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('telephone') }}</strong>

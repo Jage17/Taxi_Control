@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="row container-fluid py-8 px-4">
-    <div class="col"><h1 class="pull-left">Nuevo Taxista</h1></div>
+    <div class="col"><h1 class="pull-left">Nueva Secretaria</h1></div>
         <div class="row py-2 px-1 ">
             <div class="box box-primary">
                 <div class="box-body">
                                     
-                    <form method="POST" action="{{ url('TaxiDriver') }}">
+                    <form method="POST" action="{{ url('Customer') }}">
                         {{ csrf_field() }}
 
                         <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" placeholder="Primer Nombre">
@@ -30,5 +31,8 @@
                 </div>
             </div>
         </div>
-</div>
+</div>    
+
+
+
 @endsection

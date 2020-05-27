@@ -67,4 +67,13 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    
+    public function cliente(){
+
+        if($this->role->name_role == 'cliente'){
+            return true;
+        }
+        return false;
+    }
     }

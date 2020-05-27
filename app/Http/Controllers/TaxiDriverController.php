@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\TaxiDriver;
 use App\User;
+use App\TaxiDriver;
 use Illuminate\Http\Request;
 
 class TaxiDriverController extends Controller
@@ -30,7 +29,7 @@ class TaxiDriverController extends Controller
     public function create()
     {
         //
-        return view('taxi_drivers.index');
+        return view('taxi_drivers.create');
     }
 
     /**
@@ -42,17 +41,19 @@ class TaxiDriverController extends Controller
     public function store(Request $request)
     {
         //
-        $Taxidriver = new User();
-        $Taxidriver->first_name = $request->first_name;
-        $Taxidriver->second_name = $request->second_name;
-        $Taxidriver->surname = $request->surname;
-        $Taxidriver->second_surname = $request->second_surname;
-        $Taxidriver->email = $request->email;
-        $Taxidriver->telephone = $request->telephone;
-        $Taxidriver->no_licencia = $request->no_licencia;
-        $Taxidriver->zone_id = $request->zone_id;
+        $data = request()->all();
 
-        $Taxidriver->save();
+        User::create([
+            'first_name' => $data['first_name'],
+            'second_name' => $data['second_name'],
+            'surname' => $data['surname'],
+            'second_surname' => $data['second_surname'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'telephone' => $data['telephone'],
+            'role_id' => '3'
+        ]);
+
         return  redirect()->route('TaxiDriver.index',compact('Taxidriver'))->with('info','Registro Guardado satisfactoriamente');
 
 

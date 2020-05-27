@@ -27,13 +27,16 @@ class HomeController extends Controller
     {
         $user=Auth::user();
         if ($user->superAdministrador()){
-            return view('dashboard');
+            return view('superAdministrador');
         }else
         if ($user->secretaria()){
-            return view('dashboard2');
+            return view('secretaria');
         }else
         if ($user->taxista()){
-            return view('dashboard3');
+            return view('taxista');
+        }else
+        if ($user->cliente()){
+            return view('cliente');
         }
     }
 }
